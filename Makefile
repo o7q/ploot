@@ -14,9 +14,9 @@ EXECUTABLE = ploot
 all-windows:
 	$(CXX) $(CXXFLAGS) $(SOURCES) $(ICON) $(INCLUDES) $(LIBRARIES) -o $(EXECUTABLE) \
 	--static \
-	-DSFML_STATIC \
 	-static-libstdc++ \
 	-static-libgcc \
+	-DSFML_STATIC \
 	-lsfml-graphics-s \
 	-lsfml-window-s \
 	-lsfml-system-s \
