@@ -12,7 +12,7 @@ class SceneConfig
 public:
     SceneConfig(std::string);
 
-    std::string scene = "example";
+    std::string parentPath = "";
 
     int sceneWidth = 512;
     int sceneHeight = 512;

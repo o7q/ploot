@@ -14,3 +14,8 @@ sf::Color parseHexColor(const std::string &hex)
 
     return sf::Color(r, g, b, a);
 }
+
+bool inBound(int length, int index)
+{
+    return index < length;
+}

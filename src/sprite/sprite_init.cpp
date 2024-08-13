@@ -90,14 +90,13 @@ void SceneSprite::configureSpriteInScene(SceneConfig sceneConfig)
     float sizeX = spriteUserSize.x;
     float sizeY = spriteUserSize.y < 0 ? spriteUserSize.x / aspect : spriteUserSize.y;
 
-    sprite.setOrigin(sizeX / 2, sizeY / 2);
+    sprite.setScale(sizeX / textureSize.x, sizeY / textureSize.y);
+    sprite.setOrigin(sizeX / 2.0, sizeY / 2.0);
 
     spritePositionHome = sf::Vector2f(
-        sceneConfig.sceneWidth / 2 + spriteUserPosition.x,
-        sceneConfig.sceneHeight / 2 + spriteUserPosition.y);
+        spriteUserPosition.x,
+        spriteUserPosition.y);
 
     spritePosition = spritePositionHome;
     spriteRotation = 0;
-
-    sprite.setScale(sizeX / textureSize.x, sizeY / textureSize.y);
 }

@@ -4,7 +4,7 @@ Scene::Scene(SceneConfig &config) : config(config)
 {
     try
     {
-        for (const auto &entry : fs::directory_iterator("ploot\\scenes\\" + config.scene))
+        for (const auto &entry : fs::directory_iterator(config.parentPath + "\\sprites"))
         {
             if (entry.is_regular_file() && entry.path().extension() == ".sprite")
             {

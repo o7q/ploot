@@ -2,10 +2,11 @@
 
 SceneConfig::SceneConfig(std::string filePath)
 {
+    this->parentPath = getParentPath(filePath);
+
     if (!doesFileExist(filePath))
     {
         std::string rawConfig =
-            "scene=\"" + scene + "\"\n" +
             "sceneWidth=" + std::to_string(sceneWidth) + "\n" +
             "sceneHeight=" + std::to_string(sceneHeight) + "\n" +
             "sceneFramerate=" + std::to_string(sceneFramerate) + "\n" +
@@ -34,11 +35,7 @@ SceneConfig::SceneConfig(std::string filePath)
         std::string configValue = configPair[1];
 
         removeChar(configValue, '"');
-        if (configPair[0] == "scene")
-        {
-            this->scene = configValue;
-        }
-        else if (configPair[0] == "sceneWidth")
+        if (configPair[0] == "sceneWidth")
         {
             this->sceneWidth = stoi(configValue);
         }
