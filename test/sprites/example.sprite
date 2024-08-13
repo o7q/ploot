@@ -1,0 +1,16 @@
+spriteImagePath="my_image.png"
+
+# Sprite position, set spriteCenter to true to make the sprites origin to the center of the scene
+spritePosition=0.000000,0.000000
+spriteCenter=false
+
+# Set spriteHeight to -1 if you want to preserve the image's aspect ratio
+spriteSize=100.000000,-1
+
+# Shake modes: smooth, noise
+spriteShakeMode=noise
+
+spriteShakeAmount=1.000000
+spriteShakeKeyComboMultiplier=1.000000
+spriteShakeLength=400.000000
+spriteShakeRotationMinMax=-2.000000,2.000000

@@ -1,7 +1,5 @@
 #include <iostream>
 
-#include "init.hpp"
-
 #include "scene/scene.hpp"
 #include "scene/scene_config.hpp"
 #include "sprite/sprite.hpp"
@@ -9,10 +7,9 @@
 #include "utils/random.hpp"
 #include "utils/console.hpp"
 
-int main(int argc, char *argv[])
+class Ploot
 {
-    Random::init();
-    int exitStatus = Ploot::init(argc, argv);
-    
-    return exitStatus;
-}
+public:
+    static int init(int, char *[]);
+    static void help();
+};
