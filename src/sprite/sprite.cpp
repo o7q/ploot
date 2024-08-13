@@ -14,7 +14,10 @@ SceneSprite::SceneSprite(std::string writePath)
     // overloaded constructor to create default sprite file
     std::string rawConfig =
         "spriteImagePath=\"" + spriteImagePath + "\"\n" +
+        "\n" +
+        "# Sprite position, set spriteCenter to true to make the sprites origin to the center of the scene\n" +
         "spritePosition=" + std::to_string(spriteUserPosition.x) + "," + std::to_string(spriteUserPosition.y) + "\n" +
+        "spriteCenter=" + (centerSprite ? "true" : "false") + "\n" +
         "\n" +
         "# Set spriteHeight to -1 if you want to preserve the image's aspect ratio\n" +
         "spriteSize=" + std::to_string(spriteUserSize.x) + ",-1\n" +

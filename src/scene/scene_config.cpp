@@ -32,22 +32,23 @@ SceneConfig::SceneConfig(std::string filePath)
             continue;
         }
 
+        std::string configKey = configPair[0];
         std::string configValue = configPair[1];
 
         removeChar(configValue, '"');
-        if (configPair[0] == "sceneWidth")
+        if (configKey == "sceneWidth")
         {
             this->sceneWidth = stoi(configValue);
         }
-        else if (configPair[0] == "sceneHeight")
+        else if (configKey == "sceneHeight")
         {
             this->sceneHeight = stoi(configValue);
         }
-        else if (configPair[0] == "sceneFramerate")
+        else if (configKey == "sceneFramerate")
         {
             this->sceneFramerate = stoi(configValue);
         }
-        else if (configPair[0] == "sceneBackgroundColor")
+        else if (configKey == "sceneBackgroundColor")
         {
             this->sceneBackgroundColor = configValue;
         }

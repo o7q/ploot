@@ -44,6 +44,7 @@ private:
     std::string spriteImagePath = "my_image.png";
 
     sf::Vector2f spriteUserPosition = sf::Vector2f(0, 0);
+    bool centerSprite = false;
 
     sf::Vector2f spriteUserSize = sf::Vector2f(100, 100);
 

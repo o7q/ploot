@@ -15,10 +15,11 @@ void SceneSprite::loadSpriteFromFile(std::string spriteConfigPath)
             continue;
         }
 
+        std::string configKey = configPair[0];
         std::string configValue = configPair[1];
 
         removeChar(configValue, '"');
-        if (configPair[0] == "spriteImagePath")
+        if (configKey == "spriteImagePath")
         {
             std::string spriteImagePathRaw = configValue;
             fs::path imagePath(configValue);
@@ -31,19 +32,23 @@ void SceneSprite::loadSpriteFromFile(std::string spriteConfigPath)
             }
             this->spriteImagePath = spriteImagePathRaw;
         }
-        else if (configPair[0] == "spritePosition")
+        else if (configKey == "spritePosition")
         {
             std::vector<std::string> spritePositionRaw = splitString(configValue, ',');
             this->spriteUserPosition.x = stof(spritePositionRaw[0]);
             this->spriteUserPosition.y = stof(spritePositionRaw[1]);
         }
-        else if (configPair[0] == "spriteSize")
+        else if (configKey == "spriteCenter")
+        {
+            this->centerSprite = configValue == "true";
+        }
+        else if (configKey == "spriteSize")
         {
             std::vector<std::string> spriteSizeRaw = splitString(configValue, ',');
             this->spriteUserSize.x = stof(spriteSizeRaw[0]);
             this->spriteUserSize.y = stof(spriteSizeRaw[1]);
         }
-        else if (configPair[0] == "spriteShakeMode")
+        else if (configKey == "spriteShakeMode")
         {
             if (configValue == "smooth")
             {
@@ -54,19 +59,19 @@ void SceneSprite::loadSpriteFromFile(std::string spriteConfigPath)
                 this->spriteShakeMode = ShakeMode::NOISE;
             }
         }
-        else if (configPair[0] == "spriteShakeAmount")
+        else if (configKey == "spriteShakeAmount")
         {
             this->spriteShakeAmount = stof(configValue);
         }
-        else if (configPair[0] == "spriteShakeKeyComboMultiplier")
+        else if (configKey == "spriteShakeKeyComboMultiplier")
         {
             this->spriteShakeKeyComboMultiplier = stof(configValue);
         }
-        else if (configPair[0] == "spriteShakeLength")
+        else if (configKey == "spriteShakeLength")
         {
             this->spriteShakeLength = stof(configValue);
         }
-        else if (configPair[0] == "spriteShakeRotationMinMax")
+        else if (configKey == "spriteShakeRotationMinMax")
         {
             std::vector<std::string> spriteRotationMinMaxRaw = splitString(configValue, ',');
             this->spriteShakeRotationMinMax.x = stof(spriteRotationMinMaxRaw[0]);
@@ -91,11 +96,14 @@ void SceneSprite::configureSpriteInScene(SceneConfig sceneConfig)
     float sizeY = spriteUserSize.y < 0 ? spriteUserSize.x / aspect : spriteUserSize.y;
 
     sprite.setScale(sizeX / textureSize.x, sizeY / textureSize.y);
-    sprite.setOrigin(sizeX / 2.0, sizeY / 2.0);
+    //sprite.setOrigin(sizeX / 2.0, sizeY / 2.0);
+
+    float positionX = centerSprite ? sceneConfig.sceneWidth / 2 - sizeX / 2 : spriteUserPosition.x;
+    float positionY = centerSprite ? sceneConfig.sceneHeight / 2 - sizeY / 2 : spriteUserPosition.y;
 
     spritePositionHome = sf::Vector2f(
-        spriteUserPosition.x,
-        spriteUserPosition.y);
+        positionX,
+        positionY);
 
     spritePosition = spritePositionHome;
     spriteRotation = 0;
