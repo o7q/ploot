@@ -1,5 +1,5 @@
 # ploot
-A lightweight pngtuber tool.
+An absolutely barebones pngtuber tool.
 
 ---
 
