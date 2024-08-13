@@ -20,6 +20,8 @@ ploot.exe -l "my_scene/my_scene.scene"
 -l, --load <PATH>   |  loads a scene from a path
 ```
 
+---
+
 # Scene Configuration
 ```conf
 sceneWidth=512
@@ -27,6 +29,8 @@ sceneHeight=512
 sceneFramerate=10
 sceneBackgroundColor=00FF00FF
 ```
+
+---
 
 # Sprite Configuration
 
