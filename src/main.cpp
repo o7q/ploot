@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "init.hpp"
+#include "init/init.hpp"
 
 #include "scene/scene.hpp"
 #include "scene/scene_config.hpp"
@@ -12,7 +12,9 @@
 int main(int argc, char *argv[])
 {
     Random::init();
-    int exitStatus = Ploot::init(argc, argv);
+    
+    Ploot ploot(argc, argv);
+    int exitStatus = ploot.getStatus();
     
     return exitStatus;
 }
