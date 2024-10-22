@@ -5,8 +5,8 @@ SOURCES = $(wildcard *.cpp */*.cpp */*/*.cpp)
 
 ICON = "resources\icon\icon.res"
 
-INCLUDES = -I "C:\CppLibs\SFML\include"
-LIBRARIES = -L "C:\CppLibs\SFML\lib"
+INCLUDES = -I "C:\CppLibs\SFML\SFML_STATIC\include"
+LIBRARIES = -L "C:\CppLibs\SFML\SFML_STATIC\lib"
 
 EXECUTABLE = ploot
 
